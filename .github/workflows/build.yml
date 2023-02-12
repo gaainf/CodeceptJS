@@ -26,4 +26,5 @@ jobs:
         PUPPETEER_SKIP_CHROMIUM_DOWNLOAD: true
     - run: npm run def
     - run: npm run dtslint
+    - run: npm run build
     - run: ls -la typings
