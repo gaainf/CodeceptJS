@@ -24,6 +24,7 @@ jobs:
       env:
         PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: true
         PUPPETEER_SKIP_CHROMIUM_DOWNLOAD: true
+    - run: ls -la node_modules/tsd-jsdoc
     - run: npm run def
     - run: npm run dtslint
     - run: npm run build
