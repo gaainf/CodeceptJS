@@ -1,4 +1,4 @@
-name: Typings tests
+name: Build
 
 on:
   push:
