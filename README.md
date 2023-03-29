@@ -66,7 +66,7 @@ You don't need to worry about asynchronous nature of NodeJS or about various API
 ## Install
 
 ```sh
-npm i codeceptjs --save
+npm i codeceptjs@npm:@gaainf/codeceptjs
 ```
 
 Move to directory where you'd like to have your tests (and codeceptjs config) stored, and execute
