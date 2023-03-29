@@ -1,0 +1,39 @@
+name: Manual publish
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        default: ""
+        description: "Set base version"
+
+jobs:
+  test:
+    runs-on: ubuntu-18.04
+    strategy:
+      matrix:
+        node-version: [14.x]
+    steps:
+    - uses: actions/checkout@v3
+      with:
+        fetch-depth: 0
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v3
+      with:
+        node-version: ${{ matrix.node-version }}
+    - run: echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" >> .npmrc
+    - run: |
+        git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+        git config --global user.name "github-actions[bot]"
+    - run: npm install
+      env:
+        PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: true
+        PUPPETEER_SKIP_CHROMIUM_DOWNLOAD: true
+    - name: Inject slug/short variables
+      uses: rlespinasse/github-slug-action@v3.x
+    - run: |
+        USER_INPUT=${{ github.event.inputs.version }}
+        TAG=$(git describe --abbrev=0)
+        NAME=${USER_INPUT:-$TAG"-feature-${{ env.GITHUB_REF_SLUG }}-${{ env.GITHUB_SHA_SHORT }}"}
+    - run: echo "$TAG"
+    - run: echo "$NAME"
