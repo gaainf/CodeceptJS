@@ -32,9 +32,7 @@ jobs:
       uses: rlespinasse/github-slug-action@v3.x
     - run: |
         USER_INPUT=${{ github.event.inputs.version }}
-        TAG=$(git describe --abbrev=0 | sed -E "s/(\v[0-9]*\.[0-9]*\.[0-9]*).*/\1/g")
-        NAME=${USER_INPUT:-"${TAG}-alfa-${{ env.GITHUB_REF_NAME_SLUG_URL }}-${{ env.GITHUB_SHA_SHORT }}"}
-        echo $TAG
+        NAME=${USER_INPUT:-"alfa-${{ env.GITHUB_REF_NAME_SLUG_URL }}-${{ env.GITHUB_SHA_SHORT }}"}
         echo $NAME
         npm config set preid $NAME
     - run: npm run def
