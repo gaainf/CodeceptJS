@@ -328,11 +328,5 @@ Thanks all to those who are and will have contributing to this awesome project!
 
 MIT © [CodeceptJS Team](http://codecept.io)
 
-[npm-image]: https://badge.fury.io/js/codeceptjs.svg
-[npm-url]: https://npmjs.org/package/codeceptjs
-[travis-image]: https://travis-ci.org/Codeception/codeceptjs.svg?branch=master
-[travis-url]: https://travis-ci.org/Codeception/codeceptjs
-[daviddm-image]: https://david-dm.org/Codeception/codeceptjs.svg?theme=shields.io
-[daviddm-url]: https://david-dm.org/Codeception/codeceptjs
-[coveralls-image]: https://coveralls.io/repos/Codeception/codeceptjs/badge.svg
-[coveralls-url]: https://coveralls.io/r/Codeception/codeceptjs
+[npm-image]: https://badge.fury.io/js/@gaainf%2Fcodeceptjs.svg
+[npm-url]: https://npmjs.org/package/@gaainf/codeceptjs
