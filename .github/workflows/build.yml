@@ -33,14 +33,13 @@ jobs:
     - run: |
         USER_INPUT=${{ github.event.inputs.version }}
         TAG=$(git describe --abbrev=0)
-        NAME=${USER_INPUT:-"${TAG}-feature-${{ env.GITHUB_REF_NAME_SLUG_URL }}-${{ env.GITHUB_SHA_SHORT }}"}
-        echo "$TAG"
-        echo "$NAME"
-    #- name: Set npm preid
-    #  run: npm config set preid $NAME
-    #- run: npm run def
-    #- run: npm run dtslint
-    #- run: npm version prerelease --no-git-tag-version
+        NAME=${USER_INPUT:-"${TAG}-alfa-${{ env.GITHUB_REF_NAME_SLUG_URL }}-${{ env.GITHUB_SHA_SHORT }}"}
+        echo $TAG
+        echo $NAME
+        run: npm config set preid $NAME
+    - run: npm run def
+    - run: npm run dtslint
+    - run: npm version prerelease --no-git-tag-version
     #- run: npm version prerelease --preid=rc --force
     #- run: git status
     #- run: git push origin HEAD:${{ env.GITHUB_HEAD_REF_SLUG }} && git push --tags
