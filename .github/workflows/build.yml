@@ -33,9 +33,9 @@ jobs:
     - run: |
         USER_INPUT=${{ github.event.inputs.version }}
         TAG=$(git describe --abbrev=0)
-        NAME=${USER_INPUT:-$TAG-feature-${{ env.GITHUB_REF_NAME_SLUG_URL }}-${{ env.GITHUB_SHA_SHORT }}}
-    - run: echo $TAG
-    - run: echo $NAME
+        NAME=${USER_INPUT:-"${TAG}-feature-${{ env.GITHUB_REF_NAME_SLUG_URL }}-${{ env.GITHUB_SHA_SHORT }}"}
+        echo "$TAG"
+        echo "$NAME"
     #- name: Set npm preid
     #  run: npm config set preid $NAME
     #- run: npm run def
