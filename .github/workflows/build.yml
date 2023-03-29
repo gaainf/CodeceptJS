@@ -30,16 +30,10 @@ jobs:
         PUPPETEER_SKIP_CHROMIUM_DOWNLOAD: true
     - name: Inject slug/short variables
       uses: rlespinasse/github-slug-action@v3.x
-    - run: |
-        USER_INPUT=${{ github.event.inputs.version }}
-        NAME=${USER_INPUT:-"alfa-${{ env.GITHUB_REF_NAME_SLUG_URL }}-${{ env.GITHUB_SHA_SHORT }}"}
-        echo $NAME
-        npm config set preid $NAME
     - run: npm run def
     - run: npm run dtslint
-    - run: npm version prerelease --no-git-tag-version
-    #- run: npm version prerelease --preid=rc --force
-    #- run: git status
-    #- run: git push origin HEAD:${{ env.GITHUB_HEAD_REF_SLUG }} && git push --tags
-    #  env:
-    #    GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    - run: npm version prerelease --preid=rc --force
+    - run: git status
+    - run: git push origin HEAD:${{ env.GITHUB_HEAD_REF_SLUG }} && git push --tags
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

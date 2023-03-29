@@ -5,7 +5,7 @@ on:
     inputs:
       version:
         default: ""
-        description: "Set base version"
+        description: "Set build version"
 
 jobs:
   test:
@@ -39,3 +39,4 @@ jobs:
     - run: npm run def
     - run: npm run dtslint
     - run: npm version prerelease --no-git-tag-version
+    - run: npm publish --access public
